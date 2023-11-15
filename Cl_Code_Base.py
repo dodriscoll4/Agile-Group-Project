@@ -33,11 +33,12 @@ def runners_data():
         lines = input.readlines()
     runners_name = []
     runners_id = []
+
     for line in lines:
         split_line = line.split(",")
-        runners_name.append(split_line[0])
-        id = split_line[0].strip("\n")
-        runners_id.append(id)
+        if len(split_line) == 2:
+            runners_name.append(split_line[0])
+            runners_id.append(split_line[1].strip())
     return runners_name, runners_id
 
 
