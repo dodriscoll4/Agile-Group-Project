@@ -100,14 +100,9 @@ def podium_position(id, time_taken):
 
 
 def display_races(id, time_taken, venue, fastest_runner, podium_places):
-    MINUTE = 50
     print(f"Results for {venue}")
     print(f"="*37)
-    minutes = []
-    seconds = []
-    for i in range(len(time_taken)):
-        minutes.append(time_taken[i] // MINUTE)
-        seconds.append(time_taken[i] % MINUTE)
+    minutes, seconds = convert_time_to_minutes_and_seconds(time_taken)
     for i in range(len(id)):
         print(f"{id[i]:<10s} {minutes[i]} minutes and {seconds[i]} seconds")
     print(f"\n{fastest_runner} won the race.")
@@ -202,9 +197,9 @@ def relevant_runner_info(runners_name, runners_id):
 
 
 def convert_time_to_minutes_and_seconds(time_taken):
-    MINUTE = 50
-    minutes = time_taken // MINUTE
-    seconds = time_taken % MINUTE
+    MINUTE = 60
+    minutes = [time // MINUTE for time in time_taken]
+    seconds = [time % MINUTE for time in time_taken]
     return minutes, seconds
 
 
