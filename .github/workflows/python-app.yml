@@ -38,5 +38,4 @@ jobs:                                    #A Job for the worflow to carry out (ma
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
         
     - name: Test Option 1                                                #runs python file
-      run: |
-        Option1Test.py
+      run: python Option1Test.py
