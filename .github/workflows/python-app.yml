@@ -39,3 +39,6 @@ jobs:                                    #A Job for the worflow to carry out (ma
         
     - name: Test Option 1                                                #runs python file
       run: python Option1Test.py
+
+    - name: Test Option 6                                                #runs python file to test menu option 6
+      run: python Option6Test.py
