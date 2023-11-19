@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 from io import StringIO
-from Cl_Code_Base import displaying_runners_who_have_won_at_least_one_race, reading_race_results
+from Cl_Code_Base import displaying_runners_who_have_won_at_least_one_race
 
 
 class Option6Test(unittest.TestCase):
@@ -29,6 +29,7 @@ class Option6Test(unittest.TestCase):
 
         actual_output_lines = mock_stdout.getvalue().strip().split("\n")
 
+        # Assert that the output matches the expected output line by line
         for expected_line, actual_line in zip(expected_output_lines, actual_output_lines):
             self.assertEqual(actual_line.strip(), expected_line.strip())
 
