@@ -36,7 +36,7 @@ def runners_data():
 
     for line in lines:
         split_line = line.split(",")
-        if len(split_line) == 2:
+        if len(split_line) == 2:  # this skips past blank lines in txt
             runners_name.append(split_line[0])
             runners_id.append(split_line[1].strip())
     return runners_name, runners_id
@@ -170,8 +170,9 @@ def reading_race_results_of_relevant_runner(location, runner_id):
     time_taken = []
     for line in lines:
         split_line = line.split(",".strip("\n"))
-        id.append(split_line[0])
-        time_taken.append(int(split_line[1].strip("\n")))
+        if len(split_line) == 2:  # this skips past blank lines in txt
+            id.append(split_line[0])
+            time_taken.append(int(split_line[1].strip("\n")))
     for i in range(len(id)):
         if runner_id == id[i]:
             time_relevant_runner = time_taken[i]
@@ -199,6 +200,9 @@ def relevant_runner_info(runners_name, runners_id):
 
 def convert_time_to_minutes_and_seconds(time_taken):
     MINUTE = 60
+    if isinstance(time_taken, int):
+        # If time_taken is a single integer, convert it to a list
+        time_taken = [time_taken]
     minutes = [time // MINUTE for time in time_taken]
     seconds = [time % MINUTE for time in time_taken]
     return minutes, seconds
@@ -210,8 +214,9 @@ def sorting_where_runner_came_in_race(location, time):
     time_taken = []
     for line in lines:
         split_line = line.split(",".strip("\n"))
-        t = int(split_line[1].strip("\n"))
-        time_taken.append(t)
+        if len(split_line) == 2:  # this skips past blank lines in txt
+            t = int(split_line[1].strip("\n"))
+            time_taken.append(t)
 
     time_taken.sort()
     return time_taken.index(time) + 1, len(lines)
