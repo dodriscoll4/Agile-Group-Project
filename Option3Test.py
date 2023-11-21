@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 from io import StringIO
-from CI_Code_Base import competitors_by_county
+from Cl_Code_Base import competitors_by_county
 
 
 class Option3Test(unittest.TestCase):
