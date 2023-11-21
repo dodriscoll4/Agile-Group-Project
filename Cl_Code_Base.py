@@ -257,8 +257,26 @@ def displaying_runners_who_have_won_at_least_one_race(races_location, runners_na
         print(f"{runners[i]} ({fastest_runner})")
 
 
-def displaying_runners_who_have_not_gotten_podium():
-    """This still needs to be implemented"""
+def displaying_runners_who_have_not_gotten_podium(races_location, runners_name, runners_id):
+    podium_runners = set()
+
+    # Fetching podium runners
+    for location in races_location:
+        ids, _ = reading_race_results(location)
+        podium = podium_position(ids, _)
+        podium_runners.update(podium)
+
+    # Finding non-podium runners
+    non_podium_runners = [(runners_id[i], runners_name[i]) for i in range(len(runners_id)) if runners_id[i] not in podium_runners]
+
+    # Displaying non-podium runners
+    print("Competitors who have not achieved a podium position in any race:")
+    print("=" * 65)
+    if non_podium_runners:
+        for competitor_id, competitor_name in non_podium_runners:
+            print(f"{competitor_name} ({competitor_id})")
+    else:
+        print("All competitors have achieved at least one podium position.")
 
 
 def main():
@@ -292,7 +310,7 @@ def main():
         elif input_menu == 6:
             displaying_runners_who_have_won_at_least_one_race(races_location, runners_name, runners_id)
         elif input_menu == 7:
-            displaying_runners_who_have_not_gotten_podium()
+            displaying_runners_who_have_not_gotten_podium(races_location, runners_name, runners_id)
         print()
         input_menu = read_integer_between_numbers(MENU, 1, 8)
     updating_races_file(races_location)
