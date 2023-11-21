@@ -141,8 +141,14 @@ def competitors_by_county(names, ids):
     county_codes = {}
     with open('County_codes.txt') as file:
         for line in file:
-            name, code = line.strip().split(", ")
-            county_codes[code] = name
+            if not line.strip():  # Skip empty lines
+                continue
+            try:
+                name, code = line.strip().split(", ")
+                county_codes[code] = name
+            except ValueError as e:
+                print(f"Error splitting line: {line.strip()}. {e}")
+                continue
 
     county_runners = {} 
     for i in range(len(names)):

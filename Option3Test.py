@@ -18,7 +18,6 @@ class Option3Test(unittest.TestCase):
 Anna Fox (CK-24)
 Des Kelly (CK-23)
 Joe Flynn (CK-11)
-Joe Shine (TP-02)
 
 Kerry runners
 ====================
@@ -29,10 +28,14 @@ Limerick runners
 ====================
 Sil Murphy (LK-73)
 
+Tipperary runners
+====================
+Joe Shine (TP-02)
+
 Waterford runners
 ====================
-Lisa Collins (WD-32)
-Des Kelly (WD-19)"""
+Des Kelly (WD-19)
+Lisa Collins (WD-32)"""
 
         self.assertEqual(mock_stdout.getvalue().strip(), expected_output)
 
