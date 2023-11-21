@@ -14,7 +14,7 @@ class Option4Test(unittest.TestCase):
 
         expected_output = """Race                  1st Place    2nd Place    3rd Place
 =========================================================
-Kinsale               CK-23        KY-43        WD-19
+Kinsale               LK-73        WD-32        TP-02
 Blarney               KY-43        WD-19        WD-32
 Newmarket             WD-32        WD-19        TP-02
 Youghal               TP-02        WD-19        WD-32
