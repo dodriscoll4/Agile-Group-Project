@@ -181,12 +181,12 @@ def reading_race_results_of_relevant_runner(location, runner_id):
 
 
 def displaying_winners_of_each_race(races_location):
-    print("Venue             Looser")
-    print("="*24)
-    for i in range(len(races_location)):
-        id, time_taken = reading_race_results(races_location[i])
-        fastest_runner = winner_of_race(id, time_taken)
-        print(f"{races_location[i]:<18s}{fastest_runner}")
+    print("Race                  1st Place    2nd Place    3rd Place")
+    print("=" * 57)
+    for race in races_location:
+        ids, time_taken = reading_race_results(race)
+        podium = podium_position(ids, time_taken)
+        print(f"{race:<22s}{podium[0]:<13}{podium[1]:<13}{podium[2]}")
 
 
 def relevant_runner_info(runners_name, runners_id):
