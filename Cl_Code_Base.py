@@ -137,17 +137,28 @@ def updating_races_file(races_location):
     connection.close()
 
 
-def competitors_by_county(name, id):
-    print("Cork runners")
-    print("=" * 20)
-    for i in range(len(name)):
-        if id[i].startswith("CK"):
-            print(f"{name[i]} ({id[i]})")
-    print("Kerry runners")
-    print("=" * 20)
-    for i in range(len(name)):
-        if id[i].startswith("KY"):
-            print(f"{name[i]} ({id[i]})")
+def competitors_by_county(names, ids):
+    county_codes = {}
+    with open('County_codes.txt') as file:
+        for line in file:
+            name, code = line.strip().split(", ")
+            county_codes[code] = name
+
+    county_runners = {} 
+    for i in range(len(names)):
+        county_code = ids[i][:2] 
+        if county_code not in county_runners:
+            county_runners[county_code] = []
+        county_runners[county_code].append(f"{names[i]} ({ids[i]})")
+
+    sorted_counties = sorted(county_runners.items())
+    for county_code, runners in sorted_counties:
+        county_name = county_codes.get(county_code, "Unknown County")
+        print(f"{county_name} runners")
+        print("=" * 20)
+        for runner in sorted(runners):
+            print(runner)
+        print()
 
 
 def reading_race_results(location):
