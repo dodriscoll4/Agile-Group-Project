@@ -37,8 +37,11 @@ jobs:                                    #A Job for the worflow to carry out (ma
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
         
-    - name: Test Option 1                                                #runs python file
+    - name: Test Option 1                                                #runs python file to test menu option 1
       run: python Option1Test.py
+
+    - name: Test Option 2                                                #runs python file to test menu option 2
+      run: python Option2Test.py
 
     - name: Test Option 3                                                #runs python file to test menu option 3
       run: python Option3Test.py
@@ -52,7 +55,7 @@ jobs:                                    #A Job for the worflow to carry out (ma
     - name: Test Option 6                                                #runs python file to test menu option 6
       run: python Option6Test.py
 
-    - name: Test Option 7                                                #runs python file to test menu option 5
+    - name: Test Option 7                                                #runs python file to test menu option 7
       run: python Option7Test.py
 
 
