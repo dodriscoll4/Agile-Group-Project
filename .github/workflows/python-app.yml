@@ -58,4 +58,6 @@ jobs:                                    #A Job for the worflow to carry out (ma
     - name: Test Option 7                                                #runs python file to test menu option 7
       run: python Option7Test.py
 
+    - name: Test Option 8                                                #runs python file to test menu option 8
+      run: python Option8Test.py
 
